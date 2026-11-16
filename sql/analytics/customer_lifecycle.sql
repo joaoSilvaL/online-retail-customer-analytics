@@ -12,7 +12,7 @@ WITH valid_orders AS (
         AND invoice NOT LIKE 'C%'
         AND quantity > 0
         AND price > 0
-        AND date(invoicedate) <= date(:reference_date)
+        AND date(invoicedate) <= date('2011-12-10')
 
     GROUP BY customer_id, invoice
 ),
@@ -50,13 +50,13 @@ customer_metrics AS (
         c.*,
 
         CAST(
-            julianday(:reference_date)
+            julianday('2011-12-10')
             - julianday(c.first_purchase)
             AS INTEGER
         ) AS days_since_first_purchase,
 
         CAST(
-            julianday(:reference_date)
+            julianday('2011-12-10')
             - julianday(c.last_purchase)
             AS INTEGER
         ) AS days_since_last_purchase,
@@ -69,7 +69,7 @@ customer_metrics AS (
 
         COUNT(
             CASE
-                WHEN o.order_date > date(:reference_date, '-28 days')
+                WHEN o.order_date > date('2011-12-10', '-28 days')
                 THEN 1
             END
         ) AS orders_28d,
@@ -78,7 +78,7 @@ customer_metrics AS (
             COALESCE(
                 SUM(
                     CASE
-                        WHEN o.order_date > date(:reference_date, '-28 days')
+                        WHEN o.order_date > date('2011-12-10', '-28 days')
                         THEN o.order_value
                         ELSE 0
                     END
@@ -124,7 +124,7 @@ customer_lifecycle AS (
 )
 
 SELECT
-    date(:reference_date) AS reference_date,
+    date('2011-12-10') AS'2011-12-10',
     *
 
 FROM customer_lifecycle
