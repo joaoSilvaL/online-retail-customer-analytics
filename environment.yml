@@ -1,0 +1,6 @@
+name: projeto-port
+channels:
+  - defaults
+dependencies:
+  - python=3
+prefix: C:\Users\jao\anaconda3\envs\projeto-port

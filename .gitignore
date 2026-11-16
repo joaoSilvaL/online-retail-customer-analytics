@@ -1,0 +1,39 @@
+
+# Ambientes Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# Conda
+.conda/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Variáveis de ambiente e segredos
+.env
+.env.*
+
+# Arquivos do sistema e editores
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Banco de dados
+*.db
+*.sqlite
+*.sqlite3
+
+# Dados brutos e processados
+data/raw/*
+data/processed/*
+
+# Exceções: manter arquivos de configuração das pastas
+!data/raw/.gitkeep
+!data/processed/.gitkeep
